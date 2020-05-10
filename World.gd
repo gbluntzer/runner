@@ -1,17 +1,20 @@
 extends Node2D
 
 
-var CoinTemplate = preload("res://scenes/Coin.tscn")
+var GoodTemplate = preload("res://scenes/Coin.tscn")
+var BadTemplate = preload("res://scenes/Coin.tscn")
 onready var player = $Player
 var scroll = Vector2(-0.1,0)
-var OFFSET = 100
+var rng = RandomNumberGenerator.new()
+var Y_OFFSET = 50
+
 
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	rng.randomize()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,9 +24,24 @@ func _process(delta):
 
 
 func _on_Timer_timeout():
-	var newCoin:Area2D = CoinTemplate.instance()
+	var newCoin:Coin = GoodTemplate.instance()
+	newCoin.setCoinType("good")	
+	
+	var choice = rng.randf_range(-100, 100)
+	print(choice)
+	
+	if choice < 0:
+		newCoin = BadTemplate.instance()
+		newCoin.setCoinType("bad")
+		
+	
 	newCoin.global_position = player.global_position
-	newCoin.global_position.x = newCoin.global_position.x + OFFSET
-	newCoin.global_position.y = newCoin.global_position.y + OFFSET
+	newCoin.global_position.x = newCoin.global_position.x + get_viewport().size.x / 2
+	
+	var my_random_number = rng.randf_range(-Y_OFFSET, Y_OFFSET)
+	
+	newCoin.global_position.y = newCoin.global_position.y + my_random_number
 	self.add_child(newCoin)
+	
+
 	$Timer.start()

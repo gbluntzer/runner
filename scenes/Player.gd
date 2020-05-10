@@ -4,7 +4,7 @@ extends KinematicBody2D
 var jumpspeed = -150
 var gravityscale = 98.0
 var walkspeed = 150 
-var velocity = Vector2(500,0)
+var velocity = Vector2(250,0)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -33,7 +33,7 @@ func get_input():
 #		velocity.x = 0
 
 	if Input.is_action_pressed("ui_select"):
-		print("Space")
+#		print("Space")
 		velocity.y += jumpspeed
 	else:
 		velocity.y = gravityscale
