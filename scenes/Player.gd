@@ -5,6 +5,7 @@ var jumpspeed = -150
 var gravityscale = 98.0
 var walkspeed = 150 
 var velocity = Vector2(250,0)
+onready var anim = $AnimationPlayer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -35,8 +36,10 @@ func get_input():
 	if Input.is_action_pressed("ui_select"):
 #		print("Space")
 		velocity.y += jumpspeed
+		anim.play("Jump")
 	else:
 		velocity.y = gravityscale
+		anim.play("Run")
 		
 func player_died():
 	print("player died")
