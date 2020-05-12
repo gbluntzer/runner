@@ -1,10 +1,12 @@
 extends KinematicBody2D
 
+const SPEED = 500 
+const JUMP_SPEED = 200
+const GRAVITY = 5
+const UP = Vector2(0,-1)
 
-var jumpspeed = -150
-var gravityscale = 98.0
-var walkspeed = 150 
-var velocity = Vector2(250,0)
+var motion = Vector2(0,0)
+
 onready var anim = $AnimationPlayer
 
 
@@ -14,33 +16,32 @@ func _ready():
 
 
 func _physics_process(delta): 
-	velocity.y = gravityscale
+	apply_gravity()
 
 	get_input() 
 #	var motion = velocity*delta 
 #	move_and_collide(motion)
-	move_and_slide(velocity)
+	move_and_slide(motion, UP)
 	if global_position.y > 640:
 		player_died()
 
-	
+func apply_gravity():
+	if is_on_floor():
+		motion.y = 0
+	else:
+		motion.y += GRAVITY	
 	
 func get_input(): 
-#	if Input.is_action_pressed("ui_left"): 
-#		velocity.x = -walkspeed 
-#	elif Input.is_action_pressed("ui_right"): 
-#		velocity.x = walkspeed 
-#	else: 
-#		velocity.x = 0
 
-	if Input.is_action_pressed("ui_select"):
-#		print("Space")
-		velocity.y += jumpspeed
+	if Input.is_action_just_pressed("ui_select"):
+		print("Ui_SELECT")
+		motion.y -= JUMP_SPEED
 		anim.play("Jump")
+
 	else:
-		velocity.y = gravityscale
+		motion.x = SPEED
 		anim.play("Run")
 		
 func player_died():
-	print("player died")
+	get_tree().change_scene("res://scenes/GameOver.tscn")
 	

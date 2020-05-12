@@ -11,7 +11,7 @@ var coinType:String = "good" setget  setCoinType, getCoinType
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("ready " + coinType)
+	pass
 	
 
 
@@ -27,7 +27,7 @@ func _on_Coin_body_entered(body):
 	
 
 func setCoinType(coinType:String):
-	print("set" + coinType)
+	
 	coinType = coinType
 	if coinType == GOOD:
 		$Sprite.texture = good_texture
