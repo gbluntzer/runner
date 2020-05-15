@@ -1,11 +1,12 @@
 extends KinematicBody2D
 
-const SPEED = 500 
+const SPEED = 200 
 const JUMP_SPEED = 200
-const GRAVITY = 5
+const GRAVITY = 100
 const UP = Vector2(0,-1)
 
-var motion = Vector2(0,0)
+var motion = Vector2(10,0)
+var updatedSpeed = 0
 
 onready var anim = $AnimationPlayer
 
@@ -16,32 +17,35 @@ func _ready():
 
 
 func _physics_process(delta): 
-	apply_gravity()
+	apply_gravity(delta)
 
-	get_input() 
+	get_input(delta) 
 #	var motion = velocity*delta 
 #	move_and_collide(motion)
-	move_and_slide(motion, UP)
-	if global_position.y > 640:
+	move_and_slide(motion, UP) # allready has delta
+	if global_position.y > 640 || global_position.y <= 0:
 		player_died()
 
-func apply_gravity():
+func apply_gravity(delta):
 	if is_on_floor():
 		motion.y = 0
 	else:
-		motion.y += GRAVITY	
+		motion.y = (GRAVITY)	
 	
-func get_input(): 
+func get_input(delta): 
 
-	if Input.is_action_just_pressed("ui_select"):
-		print("Ui_SELECT")
-		motion.y -= JUMP_SPEED
+	if Input.is_action_pressed("ui_select"):
+		motion.y -= (JUMP_SPEED )
 		anim.play("Jump")
 
 	else:
-		motion.x = SPEED
+		motion.x = (SPEED + updatedSpeed )
 		anim.play("Run")
 		
 func player_died():
-	get_tree().change_scene("res://scenes/GameOver.tscn")
+	get_tree().call_group("GameState","gameOver")
+	
+	
+func updateSpeed(playerSpeed):
+	updatedSpeed = playerSpeed
 	

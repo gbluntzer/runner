@@ -1,28 +1,24 @@
 On branch master
-Your branch is ahead of 'origin/master' by 1 commit.
-  (use "git push" to publish your local commits)
-
-Changes to be committed:
-  (use "git reset HEAD <file>..." to unstage)
-
-	new file:   Menu.gd
-	new file:   fonts/Roboto-Bold.ttf
-	new file:   fonts/Roboto-BoldItalic.ttf
-	new file:   fonts/Roboto-Italic.ttf
-	new file:   fonts/Roboto-Medium.ttf
-	new file:   fonts/Roboto-MediumItalic.ttf
-	new file:   fonts/Roboto-Regular.ttf
-	new file:   runner.aseprite
-	new file:   runner.png
-	new file:   runner.png.import
-	new file:   scenes/BadCoin.tscn
-	new file:   scenes/GameOver.gd
-	new file:   scenes/GameOver.tscn
-	new file:   scenes/Menu.tscn
+Your branch is up to date with 'origin/master'.
 
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
+	modified:   World.gd
+	modified:   World.tscn
 	modified:   out.txt
+	modified:   project.godot
+	modified:   scenes/Coin.gd
+	modified:   scenes/GameOver.gd
+	modified:   scenes/Player.gd
+	modified:   scenes/Player.tscn
 
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	GameState.gd
+	scenes/GUI.gd
+	scenes/GUI.tscn
+
+no changes added to commit (use "git add" and/or "git commit -a")

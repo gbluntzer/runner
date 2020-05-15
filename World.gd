@@ -2,7 +2,6 @@ extends Node2D
 
 
 var GoodTemplate = preload("res://scenes/Coin.tscn")
-var BadTemplate = preload("res://scenes/Coin.tscn")
 onready var player = $Player
 var scroll = Vector2(-0.1,0)
 var rng = RandomNumberGenerator.new()
@@ -25,15 +24,14 @@ func _process(delta):
 
 func _on_Timer_timeout():
 	var newCoin:Coin = GoodTemplate.instance()
-	newCoin.setCoinType("good")	
+	
 	
 	var choice = rng.randf_range(-100, 100)
-	print(choice)
 	
 	if choice < 0:
-		newCoin = BadTemplate.instance()
 		newCoin.setCoinType("bad")
-		
+	else :
+		newCoin.setCoinType("good")		
 	
 	newCoin.global_position = player.global_position
 	newCoin.global_position.x = newCoin.global_position.x + get_viewport().size.x / 2

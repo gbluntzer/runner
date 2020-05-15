@@ -3,10 +3,10 @@
 [ext_resource path="res://background_002.png" type="Texture" id=1]
 [ext_resource path="res://new_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Coin.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World.gd" type="Script" id=5]
 [ext_resource path="res://background_001.png" type="Texture" id=6]
 [ext_resource path="res://background_003.png" type="Texture" id=7]
+[ext_resource path="res://scenes/GUI.tscn" type="PackedScene" id=8]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 5 )
@@ -52,18 +52,14 @@ position = Vector2( 66.0674, 430.644 )
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 
-[node name="Coin" parent="." instance=ExtResource( 4 )]
-position = Vector2( 369.077, 437.215 )
-
-[node name="Coin2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 669.414, 473.103 )
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 66.0674, 430.644 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 limit_top = 0
 limit_bottom = 600
+
+[node name="GUI" parent="Camera2D" instance=ExtResource( 8 )]
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
