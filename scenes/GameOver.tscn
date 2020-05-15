@@ -28,6 +28,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 1 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
@@ -38,9 +41,9 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 193.0
-margin_top = 200.0
+margin_top = 123.0
 margin_right = 830.0
-margin_bottom = 399.0
+margin_bottom = 477.0
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_right = 637.0
@@ -69,5 +72,13 @@ margin_right = 412.0
 margin_bottom = 44.0
 custom_fonts/font = SubResource( 2 )
 text = "Try Again"
+
+[node name="LastScore" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 203.0
+margin_right = 637.0
+margin_bottom = 354.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/TryAgainButton" to="." method="_on_TryAgainButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_TryAgainButton_pressed"]

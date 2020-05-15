@@ -5,20 +5,8 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
-	modified:   World.gd
-	modified:   World.tscn
 	modified:   out.txt
-	modified:   project.godot
-	modified:   scenes/Coin.gd
 	modified:   scenes/GameOver.gd
-	modified:   scenes/Player.gd
-	modified:   scenes/Player.tscn
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-
-	GameState.gd
-	scenes/GUI.gd
-	scenes/GUI.tscn
+	modified:   scenes/GameOver.tscn
 
 no changes added to commit (use "git add" and/or "git commit -a")
